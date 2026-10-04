@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delícias da Vovó - Receita de Cuca de Goiabada</title>
+    <style>
+      /* Estilos gerais da página */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fdf5e6;
+        color: #333;
+      }
+      header {
+        background-color: #d2691e;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+      }
+      .container {
+        display: flex;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 20px;
+      }
+      main {
+        flex: 3;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      aside {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      /* Estilos do conteúdo da receita */
+      h1,
+      h2 {
+        color: #d2691e;
+      }
+      .recipe-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        background-color: #ffdab9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-style: italic;
+        color: #8b4513;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+
+      /* Estilos das propagandas falsas (Malware traps) */
+      .fake-ad {
+        background-color: #ffeb3b;
+        border: 3px dashed red;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        display: block;
+        animation: piscar 1.5s infinite alternate;
+      }
+      .fake-ad:hover {
+        background-color: #f44336;
+        color: white;
+      }
+      .fake-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 15px;
+        font-size: 18px;
+        border: none;
+        border-radius: 50px;
+        width: 100%;
+        cursor: pointer;
+        margin: 20px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 0 5px 15px rgba(0, 128, 0, 0.4);
+      }
+
+      .countdown-ad {
+        background-color: #b71c1c;
+        color: white;
+        border-color: yellow;
+      }
+      .countdown-ad:hover {
+        background-color: #7f0000;
+      }
+      #contagem {
+        display: block;
+        font-size: 40px;
+        font-family: monospace;
+        margin: 5px 0;
+      }
+      img {
+        max-width: 100%;
+      }
+
+      /* Celular: coluna única, anúncios laterais abaixo do artigo */
+      @media (max-width: 700px) {
+        header {
+          font-size: 20px;
+          padding: 15px;
+        }
+        .container {
+          flex-direction: column;
+          padding: 10px;
+        }
+        main {
+          padding: 15px;
+        }
+        .fake-button {
+          font-size: 16px;
+        }
+        .modal-content {
+          margin: 0 15px;
+          padding: 25px;
+        }
+        .modal-content h2 {
+          font-size: 24px;
+        }
+        #contagem {
+          font-size: 32px;
+        }
+      }
+
+      @keyframes piscar {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0.8;
+          transform: scale(1.02);
+        }
+      }
+
+      /* Estilos do Modal Intrusivo */
+      #modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background: white;
+        padding: 40px;
+        text-align: center;
+        border: 5px solid red;
+        position: relative;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px red;
+      }
+      .modal-content h2 {
+        color: red;
+        font-size: 28px;
+        margin-top: 0;
+      }
+      /* Botão de fechar sutil */
+      .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 10px;
+        color: #ddd;
+        cursor: pointer;
+        border: none;
+        background: none;
+        opacity: 0.4;
+      }
+      .close-btn:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>🍰 Blog Delícias da Vovó 🍰</header>
+
+    <!-- Propaganda antes do artigo -->
+    <div style="max-width: 1000px; margin: 15px auto">
+      <a href="#" class="fake-ad"
+        >⚠️ ATENÇÃO: Seu navegador está desatualizado! Clique aqui para instalar
+        a nova versão ⚠️</a
+      >
+    </div>
+
+    <!-- Propaganda com contagem regressiva -->
+    <div style="max-width: 1000px; margin: 15px auto">
+      <a href="#" class="fake-ad countdown-ad">
+        🚨 ALERTA: seu computador será BLOQUEADO em 🚨
+        <span id="contagem">06:00</span>
+        Ligue agora para o suporte: 0800 000 0000
+      </a>
+    </div>
+
+    <div class="container">
+      <main>
+        <h1>Cuca de Goiabada Caseira</h1>
+        <img src="assets/cuca.jpeg" alt="Cuca de goiabada" class="recipe-img" />
+
+        <p>
+          Aprenda a fazer essa receita tradicional, macia por dentro e com uma
+          farofa crocante por cima. Perfeita para o café da tarde!
+        </p>
+
+        <button class="fake-button fake-ad">
+          ⬇️ BAIXAR RECEITA COMPLETA EM PDF (.exe) ⬇️
+        </button>
+
+        <h2>Ingredientes</h2>
+        <ul>
+          <li>3 xícaras de farinha de trigo</li>
+          <li>1 xícara e meia de açúcar</li>
+          <li>3 colheres de sopa de manteiga</li>
+          <li>2 ovos</li>
+          <li>1 xícara de leite</li>
+          <li>1 colher de sopa de fermento em pó</li>
+          <li>300g de goiabada cortada em cubos</li>
+        </ul>
+
+        <a
+          href="#"
+          class="fake-ad"
+          style="background-color: #00bcd4; border-color: blue"
+        >
+          🎉 PARABÉNS! VOCÊ FOI O VISITANTE NÚMERO 1.000.000! RESGATE SEU PRÊMIO
+          AQUI 🎉
+        </a>
+
+        <h2>Modo de Preparo</h2>
+        <p>
+          Bata os ovos com o açúcar e a manteiga até formar um creme. Adicione o
+          leite e a farinha aos poucos. Por último, misture o fermento
+          delicadamente. Despeje metade da massa em uma forma, espalhe a
+          goiabada e cubra com o restante da massa.
+        </p>
+
+        <button class="fake-button fake-ad" style="background-color: #e91e63">
+          ASSISTIR VÍDEO DO PREPARO ▶️
+        </button>
+      </main>
+
+      <aside>
+        <a href="#" class="fake-ad">
+          <img
+            src="assets/emagreca.jpeg"
+            alt="Emagreça"
+            style="width: 100%; border-radius: 5px"
+          />
+          <br />O Segredo para emagrecer comendo Cuca revelado!
+        </a>
+        <a
+          href="#"
+          class="fake-ad"
+          style="background-color: #8bc34a; border-color: green"
+        >
+          Descubra quem visitou seu perfil no Instagram nas últimas 24 horas!
+        </a>
+        <a href="#" class="fake-ad">
+          Seu PC está lento? 🚀<br />Baixe o Otimizador Ultra Max 2026 grátis!
+        </a>
+      </aside>
+    </div>
+
+    <!-- Propaganda antes do rodapé -->
+    <div style="max-width: 1000px; margin: 15px auto">
+      <a
+        href="#"
+        class="fake-ad"
+        style="background-color: #ff9800; border-color: black"
+      >
+        GANHE UM CELULAR NOVO RESPONDENDO A ESTA PESQUISA DE 1 MINUTO!
+      </a>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Blog Delícias da Vovó. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal Intrusivo -->
+    <div id="modal-overlay">
+      <div class="modal-content">
+        <button class="close-btn" id="close-modal">x fechar</button>
+        <h2>URGENTE!</h2>
+        <p>
+          Seu dispositivo foi selecionado para uma varredura de segurança
+          gratuita.
+        </p>
+        <button class="fake-button fake-ad">INICIAR VARREDURA AGORA</button>
+      </div>
+    </div>
+
+    <script>
+      // Array com mensagens assustadoras de "malware"
+      const mensagens = [
+        "Você foi infectado! Seus arquivos estão sendo criptografados.",
+        "147 vírus acabaram de ser instalados no seu sistema!",
+        "Roubamos seus dados de navegação e histórico do teclado.",
+        "Acesso detectado! Câmera ativada e transmitindo em segundo plano.",
+        "Erro Crítico de Segurança! Contas bancárias expostas.",
+      ];
+
+      // Adiciona o evento de clique a todos os elementos com a classe 'fake-ad'
+      const armadilhas = document.querySelectorAll(".fake-ad");
+
+      armadilhas.forEach((armadilha) => {
+        armadilha.addEventListener("click", function (event) {
+          event.preventDefault(); // Evita que a página recarregue
+
+          // Sorteia uma mensagem aleatória
+          const mensagemSorteada =
+            mensagens[Math.floor(Math.random() * mensagens.length)];
+
+          // Dispara o alerta
+          window.alert(mensagemSorteada);
+        });
+      });
+
+      // Lógica do Modal Intrusivo
+      const modal = document.getElementById("modal-overlay");
+      const btnFechar = document.getElementById("close-modal");
+
+      // Modal: 1ª vez aos 20s; depois de fechado, só volta após 60s.
+      // Tecla P (professor) pausa/retoma o modal.
+      let pausado = false;
+      let timerModal;
+      function agendarModal(ms) {
+        clearTimeout(timerModal);
+        timerModal = setTimeout(() => {
+          if (!pausado) modal.style.display = "flex";
+        }, ms);
+      }
+      agendarModal(20000);
+
+      // Fecha o modal apenas se o aluno encontrar o botão sutil
+      btnFechar.addEventListener("click", () => {
+        modal.style.display = "none";
+        agendarModal(60000);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() !== "p") return;
+        pausado = !pausado;
+        if (pausado) {
+          modal.style.display = "none";
+          clearTimeout(timerModal);
+        } else {
+          agendarModal(20000);
+        }
+      });
+
+      // Contagem regressiva falsa: começa em 6 minutos e para em 00:00
+      let restante = 6 * 60;
+      const contagem = document.getElementById("contagem");
+      const relogio = setInterval(() => {
+        restante--;
+        const m = String(Math.floor(restante / 60)).padStart(2, "0");
+        const s = String(restante % 60).padStart(2, "0");
+        contagem.textContent = `${m}:${s}`;
+        if (restante <= 0) clearInterval(relogio);
+      }, 1000);
+    </script>
+  </body>
+</html>
